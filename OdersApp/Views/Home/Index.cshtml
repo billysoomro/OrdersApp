@@ -1,0 +1,56 @@
+﻿@model OrderApp.Models.Orders
+
+@{
+    ViewData["Title"] = "Place Order";
+}
+
+<div class="container mt-5">
+    <h2>Place Your Order</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Order" class="control-label"></label>
+            <select asp-for="Order" class="form-control">
+                <option value="">-- Select Product --</option>
+                <option value="Laptop">Laptop ($999)</option>
+                <option value="Phone">Phone ($699)</option>
+                <option value="Tablet">Tablet ($399)</option>
+            </select>
+            <span asp-validation-for="Order" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OrderQuantity" class="control-label"></label>
+            <input asp-for="OrderQuantity" class="form-control" />
+            <span asp-validation-for="OrderQuantity" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-3">
+            <input type="submit" value="Place Order" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
